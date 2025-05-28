@@ -33,11 +33,11 @@ func (ms *MapStorage) SaveUser(user models.User) (string, error) {
 		return ``, err
 	}
 	user.Password = string(hash)
-	UID := uuid.New()
-	user.UID = UID
+	uid := uuid.New()
+	user.UID = uid
 	ms.stor[user.UID.String()] = user
 	log.Debug().Any("storage", ms.stor).Msg("check storage")
-	return UID.String(), nil
+	return uid.String(), nil
 }
 
 func (ms *MapStorage) ValidateUser(user models.UserLogin) (string, error) {

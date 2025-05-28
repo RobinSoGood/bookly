@@ -23,13 +23,13 @@ func (s *Server) loginHendler(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	UID, err := s.uService.LoginUser(user)
+	uid, err := s.uService.LoginUser(user)
 	if err != nil {
 		log.Error().Err(err).Msg("user login validate failed")
 		ctx.JSON(http.StatusUnauthorized, gin.H{"msg": "invalid input data", "error": err.Error()})
 		return
 	}
-	ctx.String(http.StatusCreated, "User was logined; user id: %s", UID)
+	ctx.String(http.StatusCreated, "User was logined; user id: %s", uid)
 }
 
 func (s *Server) registerHendler(ctx *gin.Context) {
@@ -46,11 +46,11 @@ func (s *Server) registerHendler(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	UID, err := s.uService.RegisterUser(user)
+	uid, err := s.uService.RegisterUser(user)
 	if err != nil {
 		log.Error().Err(err).Msg("user register failed")
 		ctx.JSON(http.StatusUnauthorized, gin.H{"msg": "invalid input data", "error": err.Error()})
 		return
 	}
-	ctx.String(http.StatusCreated, "User was created; user id: %s", UID)
+	ctx.String(http.StatusCreated, "User was created; user id: %s", uid)
 }
