@@ -18,8 +18,8 @@ type Server struct {
 	valid    *validator.Validate
 	uService service.UserService
 	bService service.BookService
-	delChan  chan struct{}
-	ErrChan  chan error
+	// delChan  chan struct{}
+	ErrChan chan error
 }
 
 func New(cfg config.Config, us service.UserService, bs service.BookService) *Server {
