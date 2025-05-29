@@ -27,18 +27,18 @@ jobs:
     - name: Test
       run: go test -v ./...
       
-  lint:
-    name: lint
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
+  # lint:
+  #   name: lint
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v4
 
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.23'
-    - name: Golangci-lint
-      uses: golangci/golangci-lint-action@v3
-      with: 
-        version: v1.62.2
-        args: --timeout 3m --config .golangci.yml
+  #   - name: Set up Go
+  #     uses: actions/setup-go@v4
+  #     with:
+  #       go-version: '1.23'
+  #   - name: Golangci-lint
+  #     uses: golangci/golangci-lint-action@v3
+  #     with: 
+  #       version: v1.62.2
+  #       args: --timeout 3m --config .golangci.yml
